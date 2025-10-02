@@ -30,20 +30,20 @@ app.get("/solutions/projects", (req, res) => {
 });
 
 app.get("/solutions/projects/id-demo", (req, res) => {
-    // Usa un ID que exista en tu JSON, por ejemplo 9
+    //Use an id that exists, e.g., 9
     projectData.getProjectById(9)
         .then(data => res.json(data))
         .catch(err => res.status(404).send(err));
 });
 
 app.get("/solutions/projects/sector-demo", (req, res) => {
-    // Usa un sector que exista, ej: "agriculture"
+    //Use a sector that exists, e.g., "agriculture"
     projectData.getProjectsBySector("agriculture")
         .then(data => res.json(data))
         .catch(err => res.status(404).send(err));
 });
 
-// Initialize & start server
+//  Initialize the server
 projectData.initialize()
     .then(() => {
         app.listen(HTTP_PORT, () => {
