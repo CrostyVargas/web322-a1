@@ -43,7 +43,7 @@ app.get("/solutions/projects/sector-demo", (req, res) => {
         .catch(err => res.status(404).send(err));
 });
 
-//  Initialize the server
+// Initialize & start server
 projectData.initialize()
     .then(() => {
         app.listen(HTTP_PORT, () => {
