@@ -11,15 +11,30 @@
     <!-- NavBar -->
     <%- include('partials/navbar', { page: 'projects' }) %>
 
+    <section class="hero min-h-[70vh] bg-base-200 mb-10">
+      <div class="hero-content flex-col lg:flex-row gap-10 text-center lg:text-left">
+        <img src="<%= project.feature_img_url %>" 
+            alt="<%= project.title %>" 
+            class="max-w-md rounded-2xl shadow-2xl border border-base-300" />
+        <div class="max-w-xl">
+          <h1 class="text-5xl font-extrabold text-primary mb-4"><%= project.title %></h1>
+          <p class="text-lg text-base-content/80">
+            Below, you will find detailed information about the project:
+          </p>
+        </div>
+      </div>
+    </section>
+
+
   <section class="p-10">
     <div class="card bg-base-200 shadow-xl">
       <div class="card-body">
-        <h2 class="card-title text-3xl"><%= project.title %></h2>
+        <!-- <h2 class="card-title text-3xl"><%= project.title %></h2> -->
         <p class="text-sm text-gray-500">Sector: <%= project.sector %></p>
         <p class="mt-4"><%= project.intro_short %></p>
         <p class="mt-4 italic text-gray-400"><%= project.impact %></p>
         <a href="<%= project.original_source_url %>" target="_blank" class="link link-primary mt-4">Source</a>
-        <button onclick="history.back()" class="btn btn-outline mt-6">⬅ Back</button>
+        <button onclick="history.back()" class="btn btn-outline mt-6">Back</button>
       </div>
     </div>
 
