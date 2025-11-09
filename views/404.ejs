@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>404 Not Found</title>
+</head>
+<body class="bg-base-200 text-base-content flex flex-col items-center justify-center h-screen">
+
+    <!-- NavBar -->
+    <%- include('partials/navbar', { page: 'projects' }) %>
+
+    <section class="hero min-h-[80vh] bg-base-200">
+        <div class="hero-content text-center flex flex-col justify-center">
+        <div class="max-w-2xl">
+            <h1 class="text-6xl font-extrabold text-error mb-6">404</h1>
+            <p class="text-lg text-base-content/80 mb-6"><%= message %></p>
+            <a href="/" class="btn btn-primary">Return Home</a>
+        </div>
+        </div>
+    </section>
+
+</body>
+</html>

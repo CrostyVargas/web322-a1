@@ -1,5 +1,5 @@
 /******************************************************************************** 
-*  WEB322 – Assignment 01 
+*  WEB322 – Assignment 02
 *  
 *  I declare that this assignment is my own work in accordance with Seneca's 
 *  Academic Integrity Policy: 
@@ -13,35 +13,69 @@
 ********************************************************************************/
 
 const express = require("express");
+const path = require("path");
 const projectData = require("./modules/projects");
 
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
+// EJS setup
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+// Serve static files from /public
+app.use(express.static("public"));
+
+
 // Routes
+
+// Home page
 app.get("/", (req, res) => {
-    res.send("Assignment 1: Cristian Vargas - 184658235");
+  res.render("home", { page: "home" });
 });
 
+// About page
+app.get("/about", (req, res) => {
+  res.render("about", { page: "about" });
+});
+
+// Projects list (with optional ?sector= query)
 app.get("/solutions/projects", (req, res) => {
-    projectData.getAllProjects()
-        .then(data => res.json(data))
-        .catch(err => res.status(500).send(err));
+  const sector = req.query.sector;
+
+  const dataPromise = sector
+    ? projectData.getProjectsBySector(sector)
+    : projectData.getAllProjects();
+
+  dataPromise
+    .then((projects) => {
+      res.render("projects", { projects, page: "projects" });
+    })
+    .catch((err) => {
+      res.status(404).render("404", { message: err });
+    });
 });
 
-app.get("/solutions/projects/id-demo", (req, res) => {
-    //Use an id that exists, e.g., 9
-    projectData.getProjectById(9)
-        .then(data => res.json(data))
-        .catch(err => res.status(404).send(err));
+// Single project details
+app.get("/solutions/projects/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  projectData
+    .getProjectById(id)
+    .then((project) => {
+      res.render("project", { project, page: "projects" });
+    })
+    .catch((err) => {
+      res.status(404).render("404", { message: err });
+    });
 });
 
-app.get("/solutions/projects/sector-demo", (req, res) => {
-    //Use a sector that exists, e.g., "agriculture"
-    projectData.getProjectsBySector("agriculture")
-        .then(data => res.json(data))
-        .catch(err => res.status(404).send(err));
+// 404 catch-all (must be last)
+app.use((req, res) => {
+  res.status(404).render("404", { message: "Page not found" });
 });
+
+
 
 // Initialize & start server
 projectData.initialize()

@@ -1,0 +1,26 @@
+<nav class="navbar bg-base-200 shadow-md px-6">
+    <div class="flex-1">
+        <a href="/" class="btn btn-ghost normal-case text-2xl font-bold text-primary">Climate Solutions</a>
+    </div>
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li><a class="<%= page === 'home' ? 'active' : '' %>" href="/">Home</a></li>
+            <li><a class="<%= page === 'about' ? 'active' : '' %>" href="/about">About</a></li>
+            <li class="relative">
+                <details class="dropdown dropdown-end">
+                    <summary class="<%= page === 'projects' ? 'active' : '' %>">
+                        View Projects
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 20" stroke-width="1" stroke="currentColor" >
+                        </svg>
+                    </summary>
+                    <ul class="p-2 shadow menu dropdown-content bg-base-200 rounded-box w-52 absolute right-0 top-full z-[1]">
+                        <li><a href="/solutions/projects">All Projects</a></li>
+                        <li><a href="/solutions/projects?sector=Industry">Industry</a></li>
+                        <li><a href="/solutions/projects?sector=Food,%20Agriculture,%20and%20Land%20Use">Agriculture</a></li>
+                        <li><a href="/solutions/projects?sector=Transportation">Transportation</a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</nav>

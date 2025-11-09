@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Climate Solutions</title>
+</head>
+<body class="bg-base-100 text-base-content">
+
+    <!-- NavBar -->
+    <%- include('partials/navbar', { page: 'home' }) %>
+
+    <!-- Main Title -->
+    <section class="hero min-h-[50vh] bg-base-100">
+        <div class="hero-content text-center ">
+            <div class="max-w-md">
+                <h1 class="text-6xl font-bold mb-4">Welcome</h1>
+                <p class="py-6">
+                Browse our current collection of modern solutions to help fight Climate Change.
+                </p>
+                <a href="/solutions/projects" class="btn btn-primary">View Projects</a>
+            </div>
+        </div>
+    </section>
+
+?    <!-- Featured Projects -->
+    <!-- <h2 class="text-3xl font-bold mb-10 text-center">Featured Projects</h2> -->
+    <section class="p-10 grid md:grid-cols-3 gap-6">
+        <!-- Project 1-->
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <figure>
+                <img src="https://drawdown.org/sites/default/files/solutions/Solution_Bamboo01.jpg" alt="Bamboo Production" class="h-56 w-full object-cover">
+                </figure>  
+                <h2 class="card-title">Bamboo Production</h2>
+                <p>Bamboo rapidly sequesters carbon in biomass and soil and can thrive on degraded lands. Long-lived bamboo products can store carbon over time.</p>
+                <a href="/solutions/projects/6" class="btn btn-outline btn-primary">View Details</a>
+            </div>
+        </div>
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <figure>
+                    <img src="https://drawdown.org/sites/default/files/solutions2020/solution_bioplastics02.jpg" alt="Bioplastics" class="h-56 w-full object-cover">
+                </figure>
+                <h2 class="card-title">Bioplastics</h2>
+                <p>Most plastics are made from fossil fuels, but bioplastics utilize plants as an alternative source of carbon. They often have lower emissions and sometimes biodegrade.</p>
+                <a href="/solutions/projects/7" class="btn btn-outline btn-primary">View Details</a>
+            </div>
+        </div>
+        <div class="card bg-base-200 shadow-xl">
+            <div class="card-body">
+                <figure>
+                    <img src="https://drawdown.org/sites/default/files/solutions2020/solution_carpooling.jpg" alt="Carpooling" class="h-56 w-full object-cover">
+                </figure>
+                <h2 class="card-title">Carpooling</h2>
+                <p>When people share rides in passenger vehicles through ride-sharing or similar practices, they can reduce greenhouse gas emissions per traveler.</p>
+                <a href="/solutions/projects/8" class="btn btn-outline btn-primary">View Details</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <title>Projects</title>
+</head>
+<body class="bg-base-100 text-base-content">
+
+    <!-- NavBar -->
+    <%- include('partials/navbar', { page: 'projects' }) %>
+
+  <section class="p-8">
+    <h1 class="text-4xl font-bold mb-6 text-center">Explore projects</h1>
+    <p class="text-lg text-base-content/80 mb-8 text-center">
+        Discover innovative solutions across different sectors contributing to a sustainable future.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+        <a href="/solutions/projects" class="btn btn-outline btn-primary">All</a>
+        <a href="/solutions/projects?sector=Land%20Sinks" class="btn btn-outline btn-primary">Land Sinks</a>
+        <a href="/solutions/projects?sector=Industry" class="btn btn-outline btn-primary">Industry</a>
+        <a href="/solutions/projects?sector=Food,%20Agriculture,%20and%20Land%20Use" class="btn btn-outline btn-primary">Agriculture</a>
+        <a href="/solutions/projects?sector=Transportation" class="btn btn-outline btn-primary">Transportation</a>
+        <a href="/solutions/projects?sector=Electricity" class="btn btn-outline btn-primary">Electricity</a>
+    </div>
+
+    <% if (projects && projects.length > 0) { %>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Sector</th>
+              <th>Summary</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% projects.forEach(project => { %>
+              <tr>
+                <td><%= project.title %></td>
+                <td><a href="/solutions/projects?sector=<%= project.sector %>"><%= project.sector %></a></td>
+                <td><%= project.summary_short %></td>
+                <td><a class="btn btn-sm btn-primary" href="/solutions/projects/<%= project.id %>">View</a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <p class="text-center text-lg mt-10 text-error">No projects found.</p>
+    <% } %>
+  </section>
+</body>
+</html>
